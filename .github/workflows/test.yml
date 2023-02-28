@@ -1,0 +1,37 @@
+# Follow Changes of Forked/Upstream Repository.
+#
+# This workflow rebase-marge changes from upstream's master to origin's master. 
+# - Ref:
+#   - https://stackoverflow.com/a/61574295/12102603 by N1ngu @ StackOverflow (EN)
+#   - https://qiita.com/KEINOS/items/3bcaa6cea853f6b63475 by KEINOS @ Qiita (JA)
+
+name: Merge upstream branches
+
+# Triggers the action as scheduled
+on:
+  # Runs on 10 minutes past every hour
+  schedule:
+    # Ref: 
+    #   - https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule
+    #   - https://crontab.guru/examples.html
+    # Cron format:
+    #         ┌───────────── minute (0 - 59)
+    #         │ ┌───────────── hour (0 - 23)
+    #         │ │ ┌───────────── day of the month (1 - 31)
+    #         │ │ │ ┌───────────── month (1 - 12 or JAN-DEC)
+    #         │ │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
+    #         │ │ │ │ │                                   
+    #         │ │ │ │ │
+    #         │ │ │ │ │
+    #         * * * * *
+    - cron:  '10 */1 * * *'
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Merge upstream
+        run: |
+         sh /path_to/nhk-gogaku-xml-gitupdate.sh
+        
