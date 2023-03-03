@@ -10,7 +10,7 @@ name: Merge upstream branches
 # Triggers the action as scheduled
 on:
   # Runs on 10 minutes past every hour
-  schedule:
+#  schedule:
     # Ref: 
     #   - https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule
     #   - https://crontab.guru/examples.html
@@ -24,7 +24,7 @@ on:
     #         │ │ │ │ │
     #         │ │ │ │ │
     #         * * * * *
-    - cron:  '10 */1 * * *'
+#    - cron:  '10 */1 * * *'
 
 jobs:
   merge:
